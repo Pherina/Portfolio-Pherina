@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pherina NGAMBE</title>
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient( 135deg,#007BFF,#E53935 );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    /* bouton */
+    .btn-primary {
+        background: linear-gradient(135deg, #007BFF, #E53935);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: blob-float 8s ease-in-out infinite;
+    }
+    @keyframes blob-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .skill-bar {
+      transition: width 1s ease-out;
+    }
+    :root {
+        /* Fonds */
+        --background: #000000;   /* Noir Gath */
+        --surface: #111111;      /* Noir adouci pour les sections */
+
+        /* Texte */
+        --text: #ffffff;
+
+        /* Couleurs principales Gath */
+        --primary-action: #007BFF;   /* Bleu Gath (couleur principale) */
+        --secondary-action: #E53935; /* Rouge Gath (accent) */
+
+        /* Couleurs secondaires */
+        --success: #4CAF50; /* Vert Gath */
+        --neutral: #E2E2E2; /* Gris Gath */
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full" style="background-color: var(--background); color: var(--text); font-family: 'Sora', sans-serif;">
+  <div id="app-wrapper" class="h-full overflow-auto"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b" style="background: rgba(0,0,0,0.85); border-color: rgba(0,123,255,0.2);">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+        <!-- Barre -->
+        <div class="flex justify-between items-center">
+
+        <!-- Logo (optionnel)
+        <div class="font-bold gradient-text text-lg">
+        Portfolio
+        </div>
+        -->
+
+        <!-- Bouton Hamburger Mobile -->
+        <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex gap-12 mx-auto text-center">
+            <a href="#about" class="text-sm hover:opacity-100 opacity-70 transition-opacity">À propos</a>
+            <a href="#skills" class="text-sm hover:opacity-100 opacity-70 transition-opacity">Compétences</a>
+            <a href="#projects" class="text-sm hover:opacity-100 opacity-70 transition-opacity">Projets</a>
+            <a href="#testimonials" class="text-sm hover:opacity-100 opacity-70 transition-opacity">Témoignages</a>
+            <a href="#contact" class="text-sm hover:opacity-100 opacity-70 transition-opacity">Contact</a>
+        </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-6 mt-6 text-center">
+        <a href="#about" class="opacity-80">À propos</a>
+        <a href="#skills" class="opacity-80">Compétences</a>
+        <a href="#projects" class="opacity-80">Projets</a>
+        <a href="#testimonials" class="opacity-80">Témoignages</a>
+        <a href="#contact" class="opacity-80">Contact</a>
+    </div>
+    </div>
+    </nav><!-- Hero Section -->
+   <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
+    <div class="blob w-96 h-96 top-20 left-10" style="background: var(--primary-action);"></div>
+    <div class="blob w-80 h-80 bottom-20 right-10" style="background: var(--secondary-action);"></div>
+    <div class="text-center relative z-10 max-w-4xl fade-in">
+     <div class="mb-6"><span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(99, 102, 241, 0.2); color: var(--primary-action);"> 👋 Bienvenue sur mon portfolio </span>
+     </div>
+     <h1 id="hero-name" class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Pherina <span class="gradient-text">ITOUA</span></h1>
+     <p id="hero-title" class="text-2xl md:text-3xl mb-4 opacity-80" style="font-family: 'Space Mono', monospace;">Community Manager &amp; Stratège Digital</p>
+     <p id="hero-tagline" class="text-lg md:text-xl opacity-60 max-w-2xl mx-auto mb-10">Transforme ta présence en ligne avec stratégie, créativité et résultats mesurables.</p>
+     <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#projects" class="px-8 py-4 rounded-xl font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));"> Voir mes projets </a> 
+        <a href="#contact" class="px-8 py-4 rounded-xl font-semibold border-2 transition-all hover:scale-105" style="border-color: var(--primary-action); color: var(--primary-action);"> Me contacter </a>
+        <!-- Bouton Télécharger le CV -->
+        <a href="CV Pherina ITOUA.pdf" download class="px-8 py-4 rounded-xl font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action)); color: #fff;"> Télécharger mon CV </a>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-32 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="fade-in stagger-1"><span class="text-sm font-semibold tracking-wider uppercase" style="color: var(--primary-action);">À propos</span>
+       <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-8">Qui suis-je<span class="gradient-text">?</span></h2>
+       <p id="about-text" class="text-lg opacity-70 leading-relaxed mb-6">Je suis Elgath Pherina, passionnée par le digital et la créativité. Depuis plus de 2 ans, j'accompagne des marques et entrepreneurs à bâtir une présence en ligne forte et engageante. Ma mission : transformer vos idées en stratégies digitales performantes, avec du contenu qui convertit et une croissance mesurable.</p>
+       <div class="flex gap-6 mt-8">
+        <div class="text-center">
+         <div class="text-3xl font-bold gradient-text">
+          2+
+         </div>
+         <div class="text-sm opacity-60">
+          Années d'exp.
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-3xl font-bold gradient-text">
+          10+
+         </div>
+         <div class="text-sm opacity-60">
+          Marques gérées
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-3xl font-bold gradient-text">
+          29%
+         </div>
+         <div class="text-sm opacity-60">
+          Engagement moy.
+         </div>
+        </div>
+       </div>
+      </div>
+      <!--
+      <div class="fade-in stagger-2 relative">
+       <div class="aspect-square rounded-3xl p-1" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));">
+        <div class="w-full h-full rounded-3xl flex items-center justify-center" style="background: var(--surface);">
+         <svg class="w-48 h-48 opacity-30" viewbox="0 0 100 100" fill="none"><circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="2" /> <path d="M20 85 Q50 60 80 85" stroke="currentColor" stroke-width="2" fill="none" />
+         </svg>
+        </div>
+       </div>
+      </div>
+      -->
+      <div class="fade-in stagger-2 relative">
+        <div class="aspect-square rounded-3xl p-1" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));">
+            <div class="w-full h-full rounded-3xl overflow-hidden">
+                <img src="IMG2.jpeg" alt="Pherina ITOUA" class="w-full h-full object-cover">
+            </div>
+        </div>
+        </div>
+
+     </div>
+    </div>
+   <!-- Skills Section -->
+<section id="skills" class="py-32 px-6" style="background: var(--surface);">
+  <div class="max-w-6xl mx-auto">
+    <!-- Titre -->
+    <div class="text-center mb-16 fade-in">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: var(--primary-action);">Compétences</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Mes <span class="gradient-text">expertises</span></h2>
+    </div>
+
+    <!-- Barres de compétences -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-6 fade-in stagger-1">
+        <div class="p-6 rounded-2xl" style="background: var(--background);">
+          <div class="flex justify-between mb-2">
+            <span class="font-semibold">Community Management</span>
+            <span style="color: var(--primary-action);">95%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background: rgba(99, 102, 241, 0.2);">
+            <div class="skill-bar h-full rounded-full" style="width: 95%; background: linear-gradient(90deg, var(--primary-action), var(--secondary-action));"></div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl" style="background: var(--background);">
+          <div class="flex justify-between mb-2">
+            <span class="font-semibold">Stratégie Digital & Meta Ads</span>
+            <span style="color: var(--primary-action);">90%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background: rgba(99, 102, 241, 0.2);">
+            <div class="skill-bar h-full rounded-full" style="width: 90%; background: linear-gradient(90deg, var(--primary-action), var(--secondary-action));"></div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl" style="background: var(--background);">
+          <div class="flex justify-between mb-2">
+            <span class="font-semibold">Création de Contenu</span>
+            <span style="color: var(--primary-action);">92%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background: rgba(99, 102, 241, 0.2);">
+            <div class="skill-bar h-full rounded-full" style="width: 92%; background: linear-gradient(90deg, var(--primary-action), var(--secondary-action));"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cartes métiers -->
+      <div class="grid grid-cols-2 gap-4 fade-in stagger-2">
+        <div class="p-6 rounded-2xl text-center card-hover" style="background: var(--background);">
+          <div class="text-4xl mb-3">📱</div>
+          <div class="font-semibold">Réseaux Sociaux</div>
+          <div class="text-sm opacity-60 mt-1">Meta, LinkedIn, TikTok</div>
+        </div>
+
+        <div class="p-6 rounded-2xl text-center card-hover" style="background: var(--background);">
+          <div class="text-4xl mb-3">🎨</div>
+          <div class="font-semibold">Design Graphique</div>
+          <div class="text-sm opacity-60 mt-1">Canva, Figma</div>
+        </div>
+
+        <div class="p-6 rounded-2xl text-center card-hover" style="background: var(--background);">
+          <div class="text-4xl mb-3">📊</div>
+          <div class="font-semibold">Analytics & KPIs</div>
+          <div class="text-sm opacity-60 mt-1">Reporting, Optimisation</div>
+        </div>
+
+        <div class="p-6 rounded-2xl text-center card-hover" style="background: var(--background);">
+          <div class="text-4xl mb-3">🌐</div>
+          <div class="font-semibold">Web & E-Réputation</div>
+          <div class="text-sm opacity-60 mt-1">WordPress, Elementor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft Skills & Outils -->
+    <div class="mt-12 grid md:grid-cols-2 gap-8 fade-in stagger-3">
+      <!-- Soft Skills -->
+      <div class="p-6 rounded-2xl" style="background: var(--background);">
+        <h3 class="text-xl font-semibold mb-3 gradient-text">Soft Skills</h3>
+        <p class="text-sm opacity-70">
+          Créativité, Organisation, Communication, Leadership, Réactivité
+        </p>
+      </div>
+
+      <!-- Outils & Logiciels -->
+      <div class="p-6 rounded-2xl" style="background: var(--background);">
+        <h3 class="text-xl font-semibold mb-3 gradient-text">Outils & Logiciels</h3>
+        <p class="text-sm opacity-70">
+          Canva, Meta Ads, WordPress, Elementor, Metricool, Analytics
+        </p>
+      </div>
+    </div>
+  </div>
+</section> <!-- Skills Section -->
+
+   <!-- Portfolio / Projets Section -->
+<section id="projects" class="py-32 px-6" style="background: var(--surface);">
+  <div class="max-w-6xl mx-auto">
+    <!-- Titre -->
+    <div class="text-center mb-16 fade-in">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: var(--primary-action);">Projets</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Mes <span class="gradient-text">réalisations</span></h2>
+    </div>
+
+    <!-- Grille des projets -->
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Projet 1 : Kaïros -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-1" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">Kaïros</h3>
+        <p class="text-sm mb-4">
+          Une communauté qui aide les femmes en recherche d’emploi à ne plus avancer seules, en combinant stratégie professionnelle, spirituelle et discernement.
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li>Plusieurs participantes engagées dans la communauté</li>
+          <li>Ateliers interactifs et sessions de mentoring réguliers</li>
+          <li>Taux d’engagement moyen : 87%</li>
+        </ul>
+        <!--
+        <div class="mt-3">
+          <img src="images/kairos_screenshot.png" alt="Screenshot Kaïros" class="rounded-xl w-full">
+        </div>
+        -->
+      </div>
+
+      <!-- Projet 2 : Centre professionnel du savoir -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-2" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">Centre Professionnel du Savoir</h3>
+        <p class="text-sm mb-4">
+          Réalisation d’un site web dynamique et de campagnes publicitaires sur Meta avec trois objectifs différents.
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li><span style="color:#4CAF50;">+18% de conversions</span> sur les campagnes</li>
+          <li>Augmentation de la visibilité et des inscriptions</li>
+          <li>ROI positif sur chaque objectif de campagne</li>
+        </ul>
+        <video controls class="rounded-xl w-full">
+            <source src="CPS.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Projet 3 : Académie Lumière du Savoir (LSA) -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-3" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">Académie Lumière du Savoir (LSA)</h3>
+        <p class="text-sm mb-4">
+          Création d’une charte graphique complète avec maquette de site web.
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li>Charte graphique validée par l’équipe</li>
+          <li>Maquette fonctionnelle facilitant le développement du site</li>
+        </ul>
+        <video controls class="rounded-xl w-full">
+            <source src="LSA.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Projet 4 : JB PRESTIGE -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-4" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">JB PRESTIGE</h3>
+        <p class="text-sm mb-4">
+          Réalisation d’un catalogue produit complet pour la présentation et la promotion des offres.
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li>Catalogue finalisé et utilisé pour toutes les communications commerciales</li>
+          <li>Meilleure visibilité des produits auprès des clients</li>
+        </ul>
+        <!--
+        <div class="mt-3">
+          <img src="images/jb_prestige_catalogue.png" alt="Catalogue JB PRESTIGE" class="rounded-xl w-full">
+        </div>
+        -->
+      </div>
+
+      <!-- Projet 5 : CAJEF Congo -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-5" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">CAJEF Congo</h3>
+        <p class="text-sm mb-4">
+          Gestion de la communication en ligne et création de contenu pour attirer des candidats.
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li>Objectif : attirer <span style="color:#4CAF50;">500 candidats</span> – objectif atteint</li>
+          <li>Taux d’engagement moyen : <span style="color:#4CAF50;">75%</span></li>
+          <li>Augmentation du nombre d’abonnés et visibilité organique</li>
+        </ul>
+        <!--
+        <div class="mt-3">
+          <img src="images/cajef_congo.png" alt="CAJEF Congo" class="rounded-xl w-full">
+        </div>
+        -->
+      </div>
+
+      <!-- Projet 6 : OA Congo -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-5" style="background: var(--background);">
+        <h3 class="text-2xl font-semibold mb-3 gradient-text">OA Congo</h3>
+        <p class="text-sm mb-4">
+          Création d'un catalogue et programme de formation des agents d'ordre et accueil
+        </p>
+        <p class="text-sm font-semibold mb-2">Résultats :</p>
+        <ul class="list-disc list-inside text-sm opacity-70 mb-3">
+          <li><span style="color:#4CAF50;">+50 candidats</span> auant pris part à la formation</li>
+          <li>Taux d’engagement moyen : <span style="color:#4CAF50;">50%</span></li>
+          <li>Augmentation du nombre d’abonnés et visibilité organique</li>
+        </ul>
+
+        <div class="mt-3">
+          <img src="OA Congo.jpg" alt="CAJEF Congo" class="rounded-xl w-full">
+        </div>
+    
+      </div>
+    </div>
+  </div>
+</section>
+
+     <div class="mt-16 p-8 rounded-3xl fade-in stagger-4" style="background: var(--surface);">
+      <h3 class="text-2xl font-bold mb-6 gradient-text">📊 Expertises Clés &amp; Réalisations</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+       <div class="flex gap-4 items-start">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(99, 102, 241, 0.2);"><span class="text-xl">📈</span>
+        </div>
+        <div>
+         <h4 class="font-semibold mb-1">Stratégie &amp; Performance</h4>
+         <p class="text-sm opacity-60">Création de lignes éditoriales, briefs créatifs et optimisation de campagnes orientées résultats.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(168, 85, 247, 0.2);"><span class="text-xl">🎨</span>
+        </div>
+        <div>
+         <h4 class="font-semibold mb-1">Création de Contenu</h4>
+         <p class="text-sm opacity-60">Posts, Stories, Reels, Carrousels et contenus visuels performants adaptés à chaque plateforme.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(34, 197, 94, 0.2);"><span class="text-xl">🌐</span>
+        </div>
+        <div>
+         <h4 class="font-semibold mb-1">E-Réputation &amp; Web</h4>
+         <p class="text-sm opacity-60">Gestion de la réputation en ligne, WordPress, Elementor et landing pages conversionnelles.</p>
+        </div>
+       </div>
+       <div class="flex gap-4 items-start">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(239, 68, 68, 0.2);"><span class="text-xl">💡</span>
+        </div>
+        <div>
+         <h4 class="font-semibold mb-1">Coordination &amp; Pilotage</h4>
+         <p class="text-sm opacity-60">Gestion multi-clients, coordination créative et suivi des KPIs pour une excellence constante.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Testimonials Section -->
+<section id="testimonials" class="py-32 px-6" style="background: var(--surface);">
+  <div class="max-w-6xl mx-auto">
+    <!-- Titre -->
+    <div class="text-center mb-16 fade-in">
+      <span class="text-sm font-semibold tracking-wider uppercase" style="color: var(--primary-action);">Témoignages</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Ce que <span class="gradient-text">disent mes collaborateurs</span></h2>
+    </div>
+
+    <!-- Grille des témoignages -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-1" style="background: var(--background);">
+        <p class="text-sm mb-4 opacity-80">
+          "Pherina est une professionnelle incroyable. Sa créativité et son organisation ont transformé notre projet en un succès."
+        </p>
+        <div class="flex items-center mt-4">
+          <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+            <img src="Mavy.png" alt="Client 1" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <p class="font-semibold">Mavy M.</p>
+            <p class="text-xs opacity-70">Président du CAJEF Congo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-2" style="background: var(--background);">
+        <p class="text-sm mb-4 opacity-80">
+          "Avec Mme Pherina NGAMBE, nous avons passé un temps très fructueux durant son parcours à Kaidal Marketing Agency ! Elle a su faire preuve d'une autonomie énorme sur les tâches qui lui ont été confiées, faisait preuve de curiosité, d'implication, et surtout a su rapidement s'adapter aux enjeux auxquels elle devait faire face. Je la recommande vivement car elle est dôtée d'un esprit très créatif et peut apporter une grande valeur ajoutée dans les projets sur lesquels elle collabore 👌🏼"
+        </p>
+        <div class="flex items-center mt-4">
+          <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+            <img src="Kevin.png" alt="Client 2" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <p class="font-semibold">Kevin Y.</p>
+            <p class="text-xs opacity-70">Spéciatliste en marketing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="p-6 rounded-2xl shadow-lg fade-in stagger-3" style="background: var(--background);">
+        <p class="text-sm mb-4 opacity-80">
+          "Pherina est une personne très altruiste. Elle est toujours disponible pour apporter son soutien et son aide au sein de notre équipe. Elle accomplit ses tâches avec efficacité et bienveillance."
+        </p>
+        <div class="flex items-center mt-4">
+          <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+            <img src="Safia.png" alt="Client 3" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <p class="font-semibold">Safia M.</p>
+            <p class="text-xs opacity-70">Juriste</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ajouter d’autres témoignages ici -->
+    </div>
+  </div>
+</section>
+
+   <!-- Contact Section -->
+   <section id="contact" class="py-32 px-6" style="background: var(--surface);">
+    <div class="max-w-4xl mx-auto">
+     <div class="text-center mb-16 fade-in"><span class="text-sm font-semibold tracking-wider uppercase" style="color: var(--primary-action);">Contact</span>
+      <h2 class="text-4xl md:text-5xl font-bold mt-4">Travaillons <span class="gradient-text">ensemble</span></h2>
+      <p class="mt-4 opacity-60">Vous avez un projet ? N'hésitez pas à me contacter !</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-6 fade-in stagger-1">
+       <div class="flex gap-4 items-center p-6 rounded-2xl" style="background: var(--background);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(99, 102, 241, 0.2);"><span class="text-xl">📧</span>
+        </div>
+        <div>
+         <div class="text-sm opacity-60">
+          Email
+         </div>
+         <div id="contact-email" class="font-semibold">
+          itoua.pherina@gmail.com
+         </div>
+        </div>
+       </div>
+       <div class="flex gap-4 items-center p-6 rounded-2xl" style="background: var(--background);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(168, 85, 247, 0.2);"><span class="text-xl">📱</span>
+        </div>
+        <div>
+         <div class="text-sm opacity-60">
+          Téléphone
+         </div>
+         <div id="contact-phone" class="font-semibold">
+          (212) 771 286 988
+         </div>
+        </div>
+       </div>
+       <div class="flex gap-4 items-center p-6 rounded-2xl" style="background: var(--background);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(34, 197, 94, 0.2);"><span class="text-xl">📍</span>
+        </div>
+        <div>
+         <div class="text-sm opacity-60">
+          Localisation
+         </div>
+         <div id="contact-location" class="font-semibold">
+          Marrakech, Maroc
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="flex gap-4 justify-center items-center fade-in stagger-2">
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/pherinangambe" class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110" style="background: var(--background);" title="LinkedIn">
+            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+        </a> 
+        <!-- Facebook -->
+        <a href="https://facebook.com/pherina.itoua" target="_blank" class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110" style="background: var(--background);" title="Facebook">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.017 4.388 10.997 10.125 11.927v-8.437H7.078v-3.49h3.047V9.412c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.927-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.07 24 18.09 24 12.073z"/>
+            </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com/pherina.ngambe/" class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform hover:scale-110" style="background: var(--background);" title="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+        </a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Footer -->
+   <footer class="py-8 px-6 text-center border-t" style="border-color: rgba(99, 102, 241, 0.2);">
+    <p class="opacity-60 text-sm">© 2026 <span id="footer-name">Pherina ITOUA</span>. Tous droits réservés.</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: '#0a0a0f',
+      surface_color: '#16161d',
+      text_color: '#f4f4f5',
+      primary_action_color: '#6366f1',
+      secondary_action_color: '#a855f7',
+      font_family: 'Sora',
+      font_size: 16,
+      hero_name: 'Elgath Pherina ITOUA',
+      hero_title: 'Community Manager & Stratège Digital',
+      hero_tagline: 'Stratégie digitale • Contenu performant • Croissance des marques',
+      about_text: 'Community Manager et stratège digital, je maîtrise la gestion multi-comptes, la création de contenus performants et les campagnes Meta Ads orientées résultats. Rigoureuse, créative et organisée, j\'accompagne les marques dans leur transformation digitale et leur croissance en ligne.',
+      contact_email: 'itoua.pherina@gmail.com',
+      contact_phone: '(212) 771 286 988',
+      contact_location: 'Marrakech, Maroc'
+    };
+
+    async function onConfigChange(config) {
+      // Update CSS variables
+      document.documentElement.style.setProperty('--background', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--surface', config.surface_color || defaultConfig.surface_color);
+      document.documentElement.style.setProperty('--text', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--primary-action', config.primary_action_color || defaultConfig.primary_action_color);
+      document.documentElement.style.setProperty('--secondary-action', config.secondary_action_color || defaultConfig.secondary_action_color);
+
+      // Update font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `'${fontFamily}', sans-serif`;
+
+      // Update font sizes
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const heroName = document.getElementById('hero-name');
+      const heroTitle = document.getElementById('hero-title');
+      const heroTagline = document.getElementById('hero-tagline');
+      
+      if (heroName) heroName.style.fontSize = `${baseSize * 3.5}px`;
+      if (heroTitle) heroTitle.style.fontSize = `${baseSize * 1.5}px`;
+      if (heroTagline) heroTagline.style.fontSize = `${baseSize * 1.125}px`;
+
+      // Update text content
+      if (heroName) {
+        const name = config.hero_name || defaultConfig.hero_name;
+        const nameParts = name.split(' ');
+        if (nameParts.length > 1) {
+          heroName.innerHTML = `${nameParts[0]} <span class="gradient-text">${nameParts.slice(1).join(' ')}</span>`;
+        } else {
+          heroName.innerHTML = `<span class="gradient-text">${name}</span>`;
+        }
+      }
+      
+      if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+      if (heroTagline) heroTagline.textContent = config.hero_tagline || defaultConfig.hero_tagline;
+      
+      const aboutText = document.getElementById('about-text');
+      if (aboutText) aboutText.textContent = config.about_text || defaultConfig.about_text;
+      
+      const contactEmail = document.getElementById('contact-email');
+      if (contactEmail) contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      
+      const contactLocation = document.getElementById('contact-location');
+      if (contactLocation) contactLocation.textContent = config.contact_location || defaultConfig.contact_location;
+      if (navName) navName.textContent = (config.hero_name || defaultConfig.hero_name).split(' ')[0];
+
+      const footerName = document.getElementById('footer-name');
+      if (footerName) footerName.textContent = config.hero_name || defaultConfig.hero_name;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_name', config.hero_name || defaultConfig.hero_name],
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+        ['about_text', config.about_text || defaultConfig.about_text],
+        ['contact_email', config.contact_email || defaultConfig.contact_email],
+        ['contact_phone', config.contact_phone || defaultConfig.contact_phone],
+        ['contact_location', config.contact_location || defaultConfig.contact_location]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d063fe18621811e',t:'MTc3MTUwOTE5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+    <script>
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        });
+
+    </script>
+</body>
+</html>
